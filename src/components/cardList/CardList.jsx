@@ -5,8 +5,11 @@ import Image from "next/image";
 import Card from "../card/Card";
 
 const getData = async (page, cat) => {
+  
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
   const res = await fetch(
-    `http://localhost:3000/api/posts?page=${page}&cat=${cat || ""}`,
+    `${apiUrl}/api/posts?page=${page}&cat=${cat || ""}`,
     {
       cache: "no-store",
     }
