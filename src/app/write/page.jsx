@@ -6,7 +6,9 @@ import { useEffect, useState } from "react";
 import "react-quill/dist/quill.bubble.css";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import ReactQuill from "react-quill";
+import dynamic from "next/dynamic";
+const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
+// import ReactQuill from "react-quill";
 
 const WritePage = () => {
   const { status } = useSession();
@@ -151,7 +153,7 @@ const WritePage = () => {
           modules={{
             toolbar: false,
           }}
-          formats={["direction", "align"]} // Include direction and alignment
+          formats={["direction", "align"]}
           style={{
             direction: "rtl",
             textAlign: "right",
